@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Cineteca Educativa Digital Fernando Maldonado · Película</title>
+  <link rel="icon" href="extra/Icon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="fluid-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="page-content">
+    <div class="top-shell">
+      <header class="top-bar">
+        <div class="brand">
+          <img src="extra/Icon.png" alt="Logo CE" class="brand-icon" style="object-fit: contain; padding: 2px;" />
+          <div class="brand-text">
+            <span class="brand-title">Cineteca Educativa Digital</span>
+            <span class="brand-subtitle">Fernando Maldonado</span>
+          </div>
+        </div>
+
+        <nav class="top-nav" aria-label="Navegación principal">
+          <a href="index2.html">Inicio</a>
+          <a href="repositorio.html">Repositorio</a>
+          <a href="informacion.html">Información</a>
+        </nav>
+      </header>
+    </div>
+
+    <div class="page-wrapper">
+      <main>
+        <section class="card" id="detalle-pelicula">
+          <div class="breadcrumb-row">
+            <div class="breadcrumb" id="breadcrumb">
+              <a href="repositorio.html">Repositorio</a>
+              <span class="sep">/</span>
+              <span id="breadcrumb-title">Película</span>
+            </div>
+            <button class="btn-back" type="button" onclick="window.location.href='repositorio.html'">
+              <span class="icon">←</span> Volver al repositorio
+            </button>
+          </div>
+
+          <div id="detail-content">
+            <!-- Aquí se inyecta la ficha o el mensaje de error -->
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <img src="extra/utplogo.png" alt="Logo UTP" class="footer-logo" />
+      <div class="footer-content">
+        <div class="footer-title">Cineteca Educativa Digital</div>
+        <div class="footer-info">
+          Asignatura a cargo: Cine <br> Licenciatura en Tecnología<br>
+          Docente: Jaime Andrés Ballesteros A
+        </div>
+      </div>
+    </footer>
+
+    <!-- Datos compartidos -->
+    <script src="films.js"></script>
+
+    <script>
+      const films = window.films || [];
+
+      function getParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
+
+      function hasDate(film) {
+        return film.year && film.semester;
+      }
+
+      function semesterKey(film) {
+        if (hasDate(film)) return `${film.year}-${film.semester}`;
+        return "Sin información";
+      }
+
+      function buildEmbedUrl(youtubeId) {
+        if (!youtubeId) return "";
+        return `https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0`;
+      }
+
+      function renderDetail(film) {
+        const container = document.getElementById("detail-content");
+        const breadcrumbTitle = document.getElementById("breadcrumb-title");
+
+        breadcrumbTitle.textContent = film.title || "Película";
+        document.title = `Cineteca · ${film.title || "Película"}`;
+
+        const sem = semesterKey(film);
+        const genre = film.genre || "Sin género";
+        const duration = film.duration || "Duración no especificada";
+        const spaces = film.spaces || [];
+        const embedUrl = buildEmbedUrl(film.youtubeId);
+
+        container.innerHTML = `
+        <header class="detail-header">
+          <div class="detail-title-block">
+            <span class="detail-kicker">Ficha del cortometraje</span>
+            <h1 class="detail-title">${film.title}</h1>
+          </div>
+          <span class="badge">Producción estudiantil</span>
+        </header>
+
+        <div class="detail-layout">
+          <div class="video-shell">
+            <div class="video-wrapper">
+              ${embedUrl
+            ? `<iframe src="${embedUrl}" title="Reproductor de ${film.title}"
+                      allowfullscreen
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>`
+            : `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#e5e7eb;font-size:0.9rem;">
+                      No se encontró un enlace de video válido para este cortometraje.
+                     </div>`
+          }
+            </div>
+            <div class="video-caption">
+              <span class="label">Vista previa</span>
+              <span class="info">Fuente: YouTube · Canal institucional</span>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div>
+              <h3>Información básica</h3>
+              <div class="detail-meta-row">
+                <div class="detail-chip">
+                  <span class="detail-chip-label">Semestre</span>
+                  <span>${sem}</span>
+                </div>
+                <div class="detail-chip">
+                  <span class="detail-chip-label">Duración</span>
+                  <span>${duration}</span>
+                </div>
+                <div class="detail-chip">
+                  <span class="detail-chip-label">Género</span>
+                  <span>${genre.join(' - ')}</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3>Sinopsis</h3>
+              <p class="info-text">
+                ${film.description || "Sin descripción disponible por el momento."}
+              </p>
+            </div>
+
+            <div>
+              <h3>Espacios destacados</h3>
+              <p class="info-text">
+                Clasificación del cortometraje según el análisis del espacio propuesto por Éric Rohmer.
+              </p>
+              <div class="spaces-row">
+                ${spaces.length
+            ? spaces.map(s => `<span class="space-pill">${s}</span>`).join("")
+            : ``
+          }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="suggested-section" id="related-section"></div>
+      `;
+
+        renderRelated(film);
+      }
+
+      function renderRelated(currentFilm) {
+        const section = document.getElementById("related-section");
+        if (!section) return;
+
+        const others = films.filter(f => f.id !== currentFilm.id);
+        if (!others.length) {
+          section.innerHTML = "";
+          return;
+        }
+
+        // Mezclamos aleatoriamente y tomamos hasta 3
+        const shuffled = [...others].sort(() => Math.random() - 0.5);
+        const suggestions = shuffled.slice(0, 3);
+
+        section.innerHTML = `
+        <div class="suggested-title-row">
+          <h3 class="suggested-title">Otros cortometrajes para consultar</h3>
+          <p class="suggested-subtitle">
+            Explora más producciones del archivo
+          </p>
+        </div>
+        <div class="suggested-grid">
+          ${suggestions
+            .map(
+              f => `<article class="suggested-card" data-id="${f.id}">
+                      <h4>${f.title}</h4>
+                      <p class="suggested-meta">
+                        <span>${semesterKey(f)}</span> ·
+                        <span>${f.duration || " "}</span> ·
+                        <span>${f.genre.join(' - ') || " "}</span>
+                      </p>
+                      <button type="button" class="suggested-link">Ver ficha ⟶</button>
+                    </article>`
+            )
+            .join(" ")}
+        </div>
+      `;
+
+        section.querySelectorAll(".suggested-card").forEach(card => {
+          const id = card.getAttribute("data-id");
+          card.addEventListener("click", () => {
+            if (id) {
+              window.location.href = `pelicula.html?id=${encodeURIComponent(id)}`;
+            }
+          });
+          const link = card.querySelector(".suggested-link");
+          if (link) {
+            link.addEventListener("click", (e) => {
+              e.stopPropagation();
+              if (id) {
+                window.location.href = `pelicula.html?id=${encodeURIComponent(id)}`;
+              }
+            });
+          }
+        });
+      }
+
+      function renderError() {
+        const container = document.getElementById("detail-content");
+        const breadcrumbTitle = document.getElementById("breadcrumb-title");
+        breadcrumbTitle.textContent = "Película no encontrada";
+        document.title = "Cineteca · Película no encontrada";
+
+        container.innerHTML = `
+        <p class="error-message">
+          <strong>No se encontró la información de este cortometraje.</strong><br>
+          Verifica que el enlace sea correcto o vuelve al
+          <a href="repositorio.html">repositorio de cortometrajes</a>
+          para seleccionar otra producción.
+        </p>
+      `;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const id = getParam("id");
+        if (!id || !films.length) {
+          renderError();
+          return;
+        }
+
+        const film = films.find(f => f.id === id);
+        if (!film) {
+          renderError();
+          return;
+        }
+
+        renderDetail(film);
+      });
+    </script>
+  </div>
+</body>
+
+</html>

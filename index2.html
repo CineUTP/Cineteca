@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Cineteca Educativa Digital Fernando Maldonado · Inicio</title>
+  <link rel="icon" href="extra/Icon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="fluid-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="page-content">
+    <!-- HEADER -->
+    <div class="top-shell">
+      <header class="top-bar">
+        <div class="brand">
+          <img src="extra/Icon.png" alt="Logo CE" class="brand-icon" style="object-fit: contain; padding: 2px;" />
+          <div class="brand-text">
+            <span class="brand-title">Cineteca Educativa Digital</span>
+            <span class="brand-subtitle">Fernando Maldonado</span>
+          </div>
+        </div>
+
+        <nav class="top-nav" aria-label="Navegación principal">
+          <a href="index2.html" class="nav-active">Inicio</a>
+          <a href="repositorio.html">Repositorio</a>
+          <a href="informacion.html">Información</a>
+        </nav>
+      </header>
+    </div>
+
+    <div class="page-wrapper">
+      <main>
+        <!-- 1. SECCIÓN TÍTULO PROYECTO -->
+        <section class="card" id="encabezado-proyecto">
+          <div class="encabezado-content">
+            <div class="kicker">Objeto virtual de aprendizaje · Licenciatura en Tecnología</div>
+            <h1>
+              Cineteca Educativa Digital<br>
+              <span>Fernando Maldonado</span>
+            </h1>
+            <p>
+              Un espacio para organizar, preservar y estudiar los cortometrajes producidos en la
+              Licenciatura en Tecnología, articulando memoria audiovisual, creación y reflexión crítica
+              sobre el lenguaje cinematográfico.
+            </p>
+          </div>
+          <div class="encabezado-logo">
+            <img src="extra/logo original.jpg" alt="Logo Cineteca Educativa Digital Fernando Maldonado" />
+          </div>
+        </section>
+
+        <!-- 2. HERO CON PELÍCULA ALEATORIA -->
+        <section id="seleccion" aria-label="Cortometraje destacado">
+          <div class="hero-wrapper">
+            <img id="hero-image" class="hero-image" src="https://via.placeholder.com/1600x650?text=Cineteca+Educativa"
+              alt="Imagen del cortometraje seleccionado" />
+            <div class="hero-overlay"></div>
+
+            <button class="hero-change-btn" id="btn-otra-seleccion" type="button">
+              <span class="icon">⟳</span> Cambiar película
+            </button>
+
+            <div class="hero-content">
+              <div class="hero-label">
+                <span class="hero-label-dot"></span>
+                Selección destacada
+              </div>
+
+              <h2 class="hero-title" id="featured-title">Título del cortometraje</h2>
+
+              <div class="hero-meta">
+                <span id="featured-semester">Semestre</span>
+                <span id="featured-duration">Duración</span>
+                <span class="hero-chip" id="featured-genre-chip">Género</span>
+              </div>
+
+              <p class="hero-description" id="featured-description">
+                Descripción breve del cortometraje seleccionado aleatoriamente.
+              </p>
+
+              <div class="hero-badge-row" id="featured-spaces">
+                <!-- badges de espacios -->
+              </div>
+
+              <div class="hero-actions">
+                <button class="btn btn-primary" type="button" id="btn-ver-detalle">
+                  Ver detalles
+                </button>
+                <button class="btn btn-secondary" type="button" onclick="window.location.href='repositorio.html'">
+                  Ver catálogo completo
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. FRASE / IMPORTANCIA DE LA CINETECA -->
+        <section class="card" aria-label="Importancia de las cinetecas">
+          <div class="quote-wrapper">
+            <div class="quote-main">
+              <div class="quote-label">Sentido de la cineteca</div>
+              <p class="quote-text">
+                “Una cineteca no es solo un depósito de películas: es un espacio donde <br>
+                <span>las imágenes vuelven a ser pensadas, discutidas y reimaginadas</span>.”
+              </p>
+              <p class="quote-author">
+                Idea guía de la Cineteca Educativa Digital Fernando Maldonado
+              </p>
+            </div>
+            <div class="quote-side">
+              <div class="quote-pill">Memoria · Formación · Creación</div>
+              <p>
+                Este espacio virtual organiza y preserva los cortometrajes producidos en la Licenciatura,
+                para que puedan ser revisados como archivo vivo: un lugar donde cada nueva cohorte
+                dialoga con las miradas, decisiones técnicas y búsquedas expresivas de quienes
+                han pasado antes por el aula.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <img src="extra/utplogo.png" alt="Logo UTP" class="footer-logo" />
+      <div class="footer-content">
+        <div class="footer-title">Cineteca Educativa Digital</div>
+        <div class="footer-info">
+          Asignatura a cargo: Cine <br> Licenciatura en Tecnología<br>
+          Docente: Jaime Andrés Ballesteros A
+        </div>
+      </div>
+    </footer>
+
+    <!-- Datos compartidos -->
+    <script src="films.js"></script>
+
+    <script>
+      const films = window.films || [];
+
+      const heroImage = document.getElementById("hero-image");
+      const featuredTitle = document.getElementById("featured-title");
+      const featuredSemester = document.getElementById("featured-semester");
+      const featuredDuration = document.getElementById("featured-duration");
+      const featuredGenreChip = document.getElementById("featured-genre-chip");
+      const featuredDescription = document.getElementById("featured-description");
+      const featuredSpacesContainer = document.getElementById("featured-spaces");
+      const btnOtraSeleccion = document.getElementById("btn-otra-seleccion");
+      const btnVerDetalle = document.getElementById("btn-ver-detalle");
+
+      let currentFeaturedId = null;
+
+      function hasDate(film) {
+        return film.year && film.semester;
+      }
+
+      function semesterKey(film) {
+        if (hasDate(film)) return `${film.year}-${film.semester}`;
+        return "Sin información";
+      }
+
+      function youtubeThumb(id) {
+        if (!id) {
+          return "https://via.placeholder.com/1600x650?text=Cortometraje";
+        }
+        return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+      }
+
+      function renderFeatured(film) {
+        heroImage.src = youtubeThumb(film.youtubeId);
+        featuredTitle.textContent = film.title;
+        featuredSemester.textContent = semesterKey(film);
+        featuredDuration.textContent = film.duration || "Duración no especificada";
+        featuredGenreChip.textContent = film.genre || "Sin género";
+        featuredDescription.textContent = film.description || "";
+
+        featuredSpacesContainer.innerHTML = "";
+        (film.spaces || []).forEach(space => {
+          const span = document.createElement("span");
+          span.className = "hero-badge";
+          span.textContent = space;
+          featuredSpacesContainer.appendChild(span);
+        });
+
+        btnVerDetalle.onclick = () => {
+          window.location.href = `pelicula.html?id=${encodeURIComponent(film.id)}`;
+        };
+      }
+
+      function seleccionarAleatorio() {
+        if (!films.length) return;
+        let candidate;
+        if (films.length > 1) {
+          do {
+            candidate = films[Math.floor(Math.random() * films.length)];
+          } while (candidate.id === currentFeaturedId);
+        } else {
+          candidate = films[0];
+        }
+        currentFeaturedId = candidate.id;
+        renderFeatured(candidate);
+      }
+
+      btnOtraSeleccion.addEventListener("click", seleccionarAleatorio);
+      document.addEventListener("DOMContentLoaded", seleccionarAleatorio);
+    </script>
+  </div>
+</body>
+
+</html>

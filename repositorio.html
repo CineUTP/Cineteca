@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Cineteca Educativa · Repositorio</title>
+  <link rel="icon" href="extra/Icon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="fluid-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="page-content">
+    <!-- HEADER -->
+    <div class="top-shell">
+      <header class="top-bar">
+        <div class="brand">
+          <img src="extra/Icon.png" alt="Logo CE" class="brand-icon" style="object-fit: contain; padding: 2px;" />
+          <div class="brand-text">
+            <span class="brand-title">Cineteca Educativa Digital</span>
+            <span class="brand-subtitle">Fernando Maldonado</span>
+          </div>
+        </div>
+
+        <nav class="top-nav" aria-label="Navegación principal">
+          <a href="index2.html">Inicio</a>
+          <a href="repositorio.html" class="nav-active">Repositorio</a>
+          <a href="informacion.html">Información</a>
+        </nav>
+      </header>
+    </div>
+
+    <div class="page-wrapper">
+      <main>
+        <section id="repositorio" aria-labelledby="titulo-repositorio">
+          <section style="margin-bottom: 20px;" class="card">
+            <div class="filters-header">
+              <div class="left">
+                <div class="icon-clock">⏱</div>
+                <div>
+                  <h2 id="titulo-repositorio">
+                    Producciones Licenciatura en Tecnología
+
+                  </h2>
+                  <p class="section-description" style="margin:0;">
+                    Explora y filtra los cortometrajes por semestre, género, tipo de producción y tipo de espacio.
+                  </p>
+                </div>
+              </div>
+              <span class="badge" style="font-size:14px; margin:20px; margin-top:-40px;  float:right;"
+                id="results-count">0
+                resultados</span>
+            </div>
+
+
+            <!-- FILTROS -->
+            <div style="margin:25px; margin-bottom: 10px;" class="filters-shell"
+              aria-label="Filtros de búsqueda de cortometrajes">
+              <div class="filters-bar">
+                <div class="filters-left">
+                  <!-- SEMESTRE -->
+                  <div class="filter-group">
+                    <div class="filter-label">
+                      <span class="icon">📅</span> Semestre
+                    </div>
+                    <div class="filter-select-wrapper">
+                      <select id="filter-semester">
+                        <option value="todos">Todos</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- GÉNERO -->
+                  <div class="filter-group">
+                    <div class="filter-label">
+                      <span class="icon">🎬</span> Género
+                    </div>
+                    <div class="filter-select-wrapper">
+                      <select id="filter-genre">
+                        <option value="todos">Todos</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- TIPO -->
+                  <div class="filter-group">
+                    <div class="filter-label">
+                      <span class="icon">🎞</span> Tipo
+                    </div>
+                    <div class="filter-select-wrapper">
+                      <select id="filter-type">
+                        <option value="todos">Todos</option>
+                        <option value="Ejercicio">Ejercicio</option>
+                        <option value="Película final">Película final</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- ESPACIO DESTACADO -->
+                  <div class="filter-group">
+                    <div class="filter-label">
+                      <span class="icon">🏛</span> Espacio destacado
+                    </div>
+                    <div class="filter-select-wrapper">
+                      <select id="filter-space">
+                        <option value="todos">Todos</option>
+                        <option value="Espacio fílmico">Espacio fílmico</option>
+                        <option value="Espacio pictórico">Espacio pictórico</option>
+                        <option value="Espacio arquitectónico">Espacio arquitectónico</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BOTÓN LIMPIAR -->
+                <button class="btn" id="btn-limpiar-filtros" type="button">
+                  <span class="btn-icon">✕</span> Limpiar filtros
+                </button>
+              </div>
+
+              <!-- CHIPS ESPACIOS DESTACADOS -->
+              <div class="chips-row" aria-label="Destacados por tipo de espacio">
+                <button class="chip-filter" data-chip="todos">
+                  <span class="dot"></span> Todos
+                </button>
+                <button class="chip-filter" data-chip="Espacio fílmico">
+                  <span class="dot"></span> Destacados fílmicos
+                </button>
+                <button class="chip-filter" data-chip="Espacio pictórico">
+                  <span class="dot"></span> Destacados pictóricos
+                </button>
+                <button class="chip-filter" data-chip="Espacio arquitectónico">
+                  <span class="dot"></span> Destacados arquitectónicos
+                </button>
+              </div>
+            </div>
+          </section>
+          <!-- CITA ROHMER -->
+          <div id="space-quote" class="space-quote" aria-live="polite">
+            <div class="space-quote-title">
+              Cita para trabajar el <span id="space-label">espacio</span>
+            </div>
+            <div class="space-quote-text" id="space-quote-text">
+              “The cinema is an instrument of discovery, even in fictional films.”
+            </div>
+            <div class="space-quote-author">
+              Éric Rohmer
+            </div>
+          </div>
+
+          <!-- GRID -->
+          <section>
+            <div class="repo-grid" id="repo-grid" aria-live="polite"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <img src="extra/utplogo.png" alt="Logo UTP" class="footer-logo" />
+      <div class="footer-content">
+        <div class="footer-title">Cineteca Educativa Digital</div>
+        <div class="footer-info">
+          Asignatura a cargo: Cine <br> Licenciatura en Tecnología<br>
+          Docente: Jaime Andrés Ballesteros A
+        </div>
+      </div>
+    </footer>
+
+    <!-- Datos compartidos -->
+    <script src="films.js"></script>
+
+    <script>
+      const films = window.films || [];
+
+      const rohmerQuotes = {
+        "Espacio fílmico":
+          "“The cinema is an instrument of discovery, even in fictional films.”",
+        "Espacio pictórico":
+          "“What matters is not a beautiful image in itself, but the relation between images.”",
+        "Espacio arquitectónico":
+          "“The setting is never neutral; it is an active element in the moral geometry of the film.”"
+      };
+
+      const filterSemester = document.getElementById("filter-semester");
+      const filterGenre = document.getElementById("filter-genre");
+      const filterType = document.getElementById("filter-type");
+      const filterSpace = document.getElementById("filter-space");
+      const btnLimpiarFiltros = document.getElementById("btn-limpiar-filtros");
+      const chipButtons = document.querySelectorAll(".chip-filter");
+      const repoGrid = document.getElementById("repo-grid");
+      const resultsCount = document.getElementById("results-count");
+      const spaceQuote = document.getElementById("space-quote");
+      const spaceLabel = document.getElementById("space-label");
+      const spaceQuoteText = document.getElementById("space-quote-text");
+
+      function hasDate(film) {
+        return film.year && film.semester;
+      }
+
+      function semesterKey(film) {
+        if (hasDate(film)) return `${film.year}-${film.semester}`;
+        return "Sin información";
+      }
+
+      function youtubeThumb(id) {
+        if (!id) {
+          return "https://via.placeholder.com/800x450?text=Cortometraje";
+        }
+        return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+      }
+
+      function populateFilters() {
+        const realSemesters = [...new Set(
+          films
+            .filter(hasDate)
+            .map(semesterKey)
+        )].sort((a, b) => {
+          const [ay, as] = a.split("-").map(Number);
+          const [by, bs] = b.split("-").map(Number);
+          if (isNaN(ay) || isNaN(by)) return 0;
+          if (ay === by) return bs - as;
+          return by - ay;
+        });
+
+        const genres = [...new Set(
+          films.flatMap(film => Array.isArray(film.genre) ? film.genre : [film.genre])
+        )].filter(g => g && g.trim() !== "").sort();
+
+        realSemesters.forEach(s => {
+          const opt = document.createElement("option");
+          opt.value = s;
+          opt.textContent = s;
+          filterSemester.appendChild(opt);
+        });
+
+        genres.forEach(g => {
+          const opt = document.createElement("option");
+          opt.value = g;
+          opt.textContent = g;
+          filterGenre.appendChild(opt);
+        });
+      }
+
+      function updateSpaceQuote(activeSpace) {
+        if (!activeSpace) {
+          spaceQuote.classList.remove("visible");
+          return;
+        }
+        spaceLabel.textContent = activeSpace.toLowerCase();
+        spaceQuoteText.textContent =
+          rohmerQuotes[activeSpace] || rohmerQuotes["Espacio fílmico"];
+        spaceQuote.classList.add("visible");
+      }
+
+      function applyFilters() {
+        const semValue = filterSemester.value;
+        const genreValue = filterGenre.value;
+        const typeValue = filterType.value;
+        const spaceValue = filterSpace.value;
+
+        let chipSpace = null;
+        const activeChip = document.querySelector(".chip-filter.active");
+        if (activeChip && activeChip.dataset.chip !== "todos") {
+          chipSpace = activeChip.dataset.chip;
+        }
+
+        const hasSpace = (film, value) =>
+          value === "todos" || (film.spaces || []).includes(value);
+
+        const filtered = films.filter(film => {
+          const key = semesterKey(film);
+          const matchSem =
+            semValue === "todos" || key === semValue;
+          const matchGenre =
+            genreValue === "todos" ||
+            (Array.isArray(film.genre) && film.genre.includes(genreValue));
+
+          const filmType = film.type || "Ejercicio"; // por si falta el dato
+          const matchType =
+            typeValue === "todos" || filmType === typeValue;
+
+          const matchSelectSpace = hasSpace(film, spaceValue);
+          const matchChipSpace = !chipSpace || hasSpace(film, chipSpace);
+
+          return matchSem && matchGenre && matchType && matchSelectSpace && matchChipSpace;
+        });
+
+        const activeSpace = chipSpace || (spaceValue !== "todos" ? spaceValue : null);
+        updateSpaceQuote(activeSpace);
+
+        renderRepoGrid(filtered);
+      }
+
+      function renderRepoGrid(list) {
+        repoGrid.innerHTML = "";
+        if (!list.length) {
+          resultsCount.textContent = "0 resultados";
+          repoGrid.innerHTML =
+            '<p style="font-size:0.9rem;color:#6b7280;">No se encontraron cortometrajes con los filtros seleccionados.</p>';
+          return;
+        }
+
+        resultsCount.textContent =
+          list.length === 1 ? "1 resultado" : list.length + " resultados";
+
+        list.forEach(film => {
+          const card = document.createElement("article");
+          card.className = "film-card";
+          card.dataset.filmId = film.id;
+
+          const thumbUrl = youtubeThumb(film.youtubeId);
+          const semLabel = semesterKey(film);
+
+          card.innerHTML = `
+          <div class="film-thumb">
+            <img src="${thumbUrl}" alt="Portada del cortometraje ${film.title}" loading="lazy" />
+            <span class="film-chip">${Array.isArray(film.genre) ? film.genre.join(" · ") : film.genre}</span>
+          </div>
+          <div class="film-body">
+            <h3 class="film-title">${film.title}</h3>
+            <div class="film-meta">
+              <span>${semLabel}</span>
+              <span>${film.duration || ""}</span>
+            </div>
+            <div class="film-spaces">
+              ${(film.spaces || [])
+              .map(space => `<span class="film-space-pill">${space}</span>`)
+              .join("")}
+            </div>
+            <div class="film-footer">
+              <span class="btn-detail">Ver detalles</span>
+            </div>
+          </div>
+        `;
+
+          card.addEventListener("click", () => {
+            window.location.href = `pelicula.html?id=${encodeURIComponent(film.id)}`;
+          });
+
+          repoGrid.appendChild(card);
+        });
+      }
+
+      function setupChipFilters() {
+        chipButtons.forEach(chip => {
+          chip.addEventListener("click", () => {
+            if (chip.classList.contains("active")) {
+              chip.classList.remove("active");
+            } else {
+              chipButtons.forEach(c => c.classList.remove("active"));
+              chip.classList.add("active");
+            }
+            applyFilters();
+          });
+        });
+      }
+
+      function setupEvents() {
+        filterSemester.addEventListener("change", applyFilters);
+        filterGenre.addEventListener("change", applyFilters);
+        filterType.addEventListener("change", applyFilters);
+        filterSpace.addEventListener("change", applyFilters);
+
+        btnLimpiarFiltros.addEventListener("click", () => {
+          filterSemester.value = "todos";
+          filterGenre.value = "todos";
+          filterType.value = "todos";
+          filterSpace.value = "todos";
+          chipButtons.forEach(c => c.classList.remove("active"));
+          applyFilters();
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        populateFilters();
+        setupChipFilters();
+        setupEvents();
+        renderRepoGrid(films);
+        updateSpaceQuote(null);
+      });
+    </script>
+  </div>
+</body>
+
+</html>
