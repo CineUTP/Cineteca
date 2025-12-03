@@ -10,7 +10,7 @@ window.films = [
     genre: ["Drama"],
     duration: "12:19",
     youtubeId: "BHAZIvk_blc",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
@@ -22,7 +22,7 @@ window.films = [
     genre: ["Drama"],
     duration: "18:34",
     youtubeId: "wqV2IPj6IHQ",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
@@ -34,7 +34,7 @@ window.films = [
     genre: ["Drama"],
     duration: "15:22",
     youtubeId: "Bs6jYE1tBtA",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: ["Espacio arquitectónico"],
     description: "Estamos trabajando en ello..."
   },
@@ -46,7 +46,7 @@ window.films = [
     genre: ["Drama"],
     duration: "10:15",
     youtubeId: "jmh5w5SM2do",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
@@ -58,7 +58,7 @@ window.films = [
     genre: ["Drama"],
     duration: "12:42",
     youtubeId: "6cpiM1vojf8",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
@@ -70,7 +70,7 @@ window.films = [
     genre: ["Thriller"],
     duration: "30:10",
     youtubeId: "C9ClacdzbJI",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: ["Espacio pictórico"],
     description: "Estamos trabajando en ello..."
   },
@@ -82,7 +82,7 @@ window.films = [
     genre: ["Drama", "Thriller"],
     duration: "29:19",
     youtubeId: "efdK6p3nvb4",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
@@ -94,7 +94,7 @@ window.films = [
     genre: ["Drama"],
     duration: "26:10",
     youtubeId: "YXWPTvElsUs",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
@@ -106,7 +106,7 @@ window.films = [
     genre: ["Comedia", "Romance"],
     duration: "29:51",
     youtubeId: "p153VGt_MgI",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: ["Espacio fílmico"],
     description:
       "Isabela Valencia, una joven superficial, solo se preocupa por qué tono de ropa combina con su piel y a cuál de sus admiradores darle el sí para no aburrirse los viernes en la noche. Cree tener a todos los hombres a sus pies, hasta que, una noche, su mejor amigo Alex le propone una arriesgada apuesta que cambiará el rumbo de su vida."
@@ -119,7 +119,7 @@ window.films = [
     genre: ["Drama", "Ficción"],
     duration: "17:49",
     youtubeId: "RnP5gQHmCVc",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
@@ -131,7 +131,7 @@ window.films = [
     genre: ["Thriller"],
     duration: "15:52",
     youtubeId: "mMpvTZ_lxBk",
-    type: "Ejercicio",
+    type: "Película final",
     spaces: ["Espacio fílmico"],
     description: "Estamos trabajando en ello..."
   },
@@ -154,8 +154,8 @@ window.films = [
   {
     id: "quie",
     title: "¿Y quién no?",
-    year: null,
-    semester: null,
+    year: 2010,
+    semester: 1,
     genre: ["Experimental", "Drama"],
     duration: "19:11",
     youtubeId: "gxwWoFgXCKg",
