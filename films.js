@@ -421,7 +421,7 @@ window.films = [
     title: "Eureka",
     year: 2009,
     semester: "1",
-    genre: [],
+    genre: ["Drama"],
     duration: "29:35",
     youtubeId: "wp_YBo1_ClY",
     type: "Película final",
@@ -445,7 +445,7 @@ window.films = [
     title: "Al compás del caos",
     year: 2012,
     semester: "2",
-    genre: [],
+    genre: ["Drama"],
     duration: "14:52",
     youtubeId: "E_VXSD9XrQw",
     type: "Película final",
@@ -457,12 +457,12 @@ window.films = [
     title: "El Viejo Jacko",
     year: 2010,
     semester: "2",
-    genre: [],
+    genre: ["Comedia"],
     duration: "13:29",
     youtubeId: "V3GCcZqpMqc",
     type: "Película final",
     spaces: [],
-    description: "Estamos trabajando en ello..."
+    description: "El Viejo Jacko es un personaje muy particular, pues entre más trabaja más deudas tiene, pero un día, con una idea absurda encuentra la forma de solucionar todos sus problemas"
   },
   {
     id: "nada",
@@ -482,7 +482,7 @@ window.films = [
     title: "Epitafio Rojo",
     year: 2016,
     semester: "2",
-    genre: [],
+    genre: ["Terror", "Suspenso"],
     duration: "13:22",
     youtubeId: "U7nJ50todtw",
     type: "Película final",
@@ -941,7 +941,7 @@ window.films = [
     title: "La Leyenda",
     year: 2009,
     semester: "1",
-    genre: ["Drama"],
+    genre: ["Suspenso"],
     duration: "11:03",
     youtubeId: "vXm_Tes5jrY",
     type: "Película final",
@@ -1176,7 +1176,7 @@ window.films = [
     duration: "20:47",
     youtubeId: "rnnUQWbP6c4",
     type: "Película final",
-    spaces: [],
+    spaces: ["Espacio arquitectónico"],
     description:
       "En una casa de alquiler, un anciano llamado Alonso arrienda dos habitaciones: una a Rodrigo, un escritor que dedica su vida a las letras y a los libros, gran admirador de Alfred Hitchcock, y la otra a un transformista con hábitos poco agradables que empiezan a incomodar a Rodrigo."
   },
@@ -1252,7 +1252,7 @@ window.films = [
     genre: [],
     duration: "18:37",
     youtubeId: "--Pnjdo6i3Q",
-    type: "Película final",
+    type: "Ejercicio",
     spaces: [],
     description: "Estamos trabajando en ello..."
   },
